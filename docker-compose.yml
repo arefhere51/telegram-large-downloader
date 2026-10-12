@@ -1,0 +1,15 @@
+services:
+  downloader:
+    build: .
+    env_file:
+      - .env
+    environment:
+      DATA_DIR: /app/data
+      PORT: 8000
+      TELEGRAM_API_LISTEN_HOST: 127.0.0.1
+      TELEGRAM_API_PORT: 8081
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
