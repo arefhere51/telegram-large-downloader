@@ -1,0 +1,11 @@
+مخزن باید عمومی باشد و فایل `install.sh` را در ریشهٔ شاخهٔ `main` قرار داده باشی. در همان Bash لینوکسی/کانتینری که پرامپتش شبیه `root@...:/#` است، این دستور را اجرا کن:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/arefhere51/telegram-large-downloader/main/install.sh -o /tmp/telegram-large-downloader-install.sh && bash /tmp/telegram-large-downloader-install.sh
+```
+
+نصب‌گر سورس مخزن را می‌گیرد، آن را در `$HOME/telegram-large-downloader` قرار می‌دهد، چهار مقدار Telegram را در ترمینال می‌پرسد، آن‌ها را فقط در `.env` محلی ذخیره می‌کند و سپس `docker compose up --build` را اجرا می‌کند. توکن ربات و API Hash هنگام تایپ نمایش داده نمی‌شوند.
+
+پیش‌نیاز: `curl`، `unzip` و Docker Compose v2؛ همچنین Docker daemon باید برای همین shell قابل دسترسی و در حال اجرا باشد. اگر داخل کانتینری هستی که Docker ندارد، این دستور داخل همان کانتینر اجرا نمی‌شود؛ باید روی میزبان یا محیط دارای Docker اجرا کنی.
+
+اجرای محلی، لینک `localhost` می‌دهد که فقط از همان ماشین قابل بازشدن است. برای لینک عمومی، برنامه را روی Railway deploy کن و `PUBLIC_BASE_URL` را روی دامنهٔ HTTPS سرویس تنظیم کن.

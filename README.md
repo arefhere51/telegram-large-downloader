@@ -118,3 +118,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command "$ErrorActionPreference='
 فایل‌های داده در پوشهٔ نصب باقی می‌مانند؛ اجرای دوبارهٔ دستور، کد را به‌روز می‌کند و فایل `.env` و تاریخچهٔ محلی را حفظ می‌کند. این روش برای دریافت ZIP از GitHub به Git نصب‌شده احتیاج ندارد.
 
 **مهم دربارهٔ لینک دانلود:** دستور بالا ربات را روی کامپیوتر خودت اجرا می‌کند. لینک پیش‌فرض `localhost` فقط روی همان کامپیوتر باز می‌شود، نه در تلگرام گوشی یا برای افراد دیگر. برای لینک دانلود عمومی، برنامه باید روی Railway اجرا شود و `PUBLIC_BASE_URL` با دامنهٔ HTTPS آن تنظیم شود. اجرای محلی نیز تا وقتی پنجرهٔ سرویس باز است فعال می‌ماند.
+
+
+### اجرای Bash در Linux یا ترمینال کانتینر
+
+در شاخهٔ `main` ریشهٔ مخزن باید شامل فایل `install.sh` باشد. دستور قبلی PowerShell مخصوص Windows بود؛ وقتی پرامپت شبیه `root@...:/#` است، این دستور Bash را به‌کار ببر:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/arefhere51/telegram-large-downloader/main/install.sh -o /tmp/telegram-large-downloader-install.sh && bash /tmp/telegram-large-downloader-install.sh
+```
+
+`install.sh` هم فایل‌های برنامه‌ای را که مستقیم در ریشهٔ مخزن قرار دارند می‌خواند و هم حالت قرارداشتن ZIP در مخزن را پشتیبانی می‌کند. در اجرای اول، مقادیر تلگرام را در ترمینال می‌پرسد و فقط در فایل `.env` محلی نگه می‌دارد. این روش نیازمند Docker daemon قابل‌دسترسی است؛ داخل کانتینرهای بدون Docker socket باید آن را روی سیستم میزبان اجرا کنی.
